@@ -1,0 +1,132 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="card"
+            type="com.example.codechallenge2.model.DisplayCard" />
+        <import type="android.view.View" />
+
+    </data>
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:visibility="@{ card.hasImage &amp;&amp; card.hasDescription ? View.VISIBLE : View.GONE }"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            imageUrl="@{ card.image.url }"
+            android:id="@+id/image"
+            tools:src="@drawable/ic_launcher_background"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:contentDescription="Thumbnail" />
+
+        <TextView
+            android:layout_marginStart="5dp"
+            android:layout_width="0dp"
+            android:id="@+id/imageTitle"
+            android:layout_height="wrap_content"
+            android:text="@{ card.title.text }"
+            android:textColor="@{ card.title.attributes.getTextColor() }"
+            android:textSize="@{ card.title.attributes.getTextSize() }"
+            tools:text="Title"
+            app:layout_constraintStart_toStartOf="@id/image"
+            app:layout_constraintEnd_toEndOf="@id/image"
+            app:layout_constraintBottom_toTopOf="@id/description"
+        />
+
+        <TextView
+            android:layout_marginStart="5dp"
+            android:id="@+id/description"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:text="@{ card.description.text }"
+            android:textColor="@{ card.description.attributes.getTextColor() }"
+            android:textSize="@{ card.description.attributes.getTextSize() }"
+            tools:text="Title"
+            app:layout_constraintBottom_toBottomOf="@id/image"
+            app:layout_constraintStart_toStartOf="@id/image"
+            app:layout_constraintEnd_toEndOf="@id/image"
+
+            />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        tools:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:visibility="@{ card.hasImage &amp;&amp; !card.hasDescription ? View.VISIBLE : View.GONE }"
+        android:padding="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            imageUrl="@{ card.image.url }"
+            android:layout_marginBottom="5dp"
+            android:id="@+id/imageWithOnlyTitle"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:contentDescription="Thumbnail" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{ card.title.text }"
+            android:textColor="@{ card.title.attributes.getTextColor() }"
+            android:textSize="@{ card.title.attributes.getTextSize() }"
+            tools:text="Title"
+            app:layout_constraintStart_toStartOf="@id/imageWithOnlyTitle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/imageWithOnlyTitle"
+            />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        tools:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:visibility="@{ card.hasImage ? View.GONE : View.VISIBLE }"
+        android:padding="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{ card.title.text }"
+            android:textColor="@{ card.title.attributes.getTextColor() }"
+            android:textSize="@{ card.title.attributes.getTextSize() }"
+            tools:text="Title"
+            android:id="@+id/title"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{ card.description.text }"
+            android:textColor="@{ card.description.attributes.getTextColor() }"
+            android:textSize="@{ card.description.attributes.getTextSize() }"
+            tools:text="Title"
+            app:layout_constraintTop_toBottomOf="@id/title"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+
+            />
+        />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
