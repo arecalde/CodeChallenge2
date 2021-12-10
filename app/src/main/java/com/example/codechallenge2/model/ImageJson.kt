@@ -3,7 +3,7 @@ package com.example.codechallenge2.model
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
-class Image {
+class ImageJson {
     @SerializedName("url")
     @Expose
     var url: String? = null
