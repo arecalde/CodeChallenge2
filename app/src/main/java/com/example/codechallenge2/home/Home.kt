@@ -10,7 +10,6 @@ import androidx.compose.ui.unit.ExperimentalUnitApi
 
 class Home : Fragment() {
 
-    @ExperimentalUnitApi
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
